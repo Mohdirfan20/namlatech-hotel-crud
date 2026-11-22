@@ -1,0 +1,23 @@
+{
+  "name": "namlatech-hotel-directory-monorepo",
+  "version": "1.0.0",
+  "description": "Full-Stack Hotel List Page (CRUD) SPA built with React, Redux Toolkit, Node.js, Express, and PostgreSQL Native Queries",
+  "scripts": {
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "test:backend": "cd backend && node test_api.js",
+    "seed:backend": "cd backend && npm run seed"
+  },
+  "keywords": [
+    "react",
+    "redux-toolkit",
+    "express",
+    "postgresql",
+    "native-sql",
+    "leaflet",
+    "spa"
+  ],
+  "author": "Namlatech Assessment Submission",
+  "license": "ISC"
+}
