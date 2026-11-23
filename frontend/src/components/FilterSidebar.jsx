@@ -71,50 +71,21 @@ const FilterSidebar = () => {
 
   return (
     <aside className="w-full lg:w-72 flex-shrink-0 space-y-5">
-      {/* Search by Title Box */}
-      <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-gray-800 mb-3 flex items-center justify-between">
-          <span className="flex items-center">
-            <Search className="w-4 h-4 mr-2 text-blue-600" /> Search Hotel
-          </span>
-          {filters.search && (
-            <button
-              onClick={handleClearSearch}
-              className="text-xs text-red-500 hover:text-red-700 flex items-center"
-            >
-              <X className="w-3 h-3 mr-0.5" /> Clear
-            </button>
-          )}
-        </h3>
-
-        <form onSubmit={handleSearchSubmit} className="space-y-3">
-          <div className="relative">
-            <input
-              type="text"
-              value={titleInput}
-              onChange={handleSearchChange}
-              placeholder="e.g. Palace, Resort, Paris..."
-              className="w-full pl-9 pr-8 py-2.5 text-sm bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-            />
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
-            {titleInput && (
-              <button
-                type="button"
-                onClick={() => setTitleInput('')}
-                className="absolute right-2.5 top-3 text-gray-400 hover:text-gray-600"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
+      {/* Active Search Filter Badge if searched from banner */}
+      {filters.search && (
+        <div className="bg-blue-50 border border-blue-200 p-3.5 rounded-xl shadow-2xs flex items-center justify-between">
+          <div className="text-xs">
+            <span className="text-gray-500 block">Active Search:</span>
+            <span className="font-bold text-blue-900">"{filters.search}"</span>
           </div>
           <button
-            type="submit"
-            className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold uppercase tracking-wider rounded-lg shadow-sm transition"
+            onClick={handleClearSearch}
+            className="text-xs font-semibold text-red-600 hover:text-red-800 bg-white px-2.5 py-1 rounded-md border border-red-200 shadow-2xs transition"
           >
-            Search by Title
+            Clear Search
           </button>
-        </form>
-      </div>
+        </div>
+      )}
 
       {/* Price Range Filter Card matching sample UI */}
       <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
