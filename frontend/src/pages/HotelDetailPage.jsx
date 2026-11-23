@@ -24,7 +24,8 @@ import {
   UtensilsCrossed,
   Waves,
   Eye,
-  CheckCircle2
+  CheckCircle2,
+  ChevronRight
 } from 'lucide-react';
 
 const HotelDetailPage = () => {
@@ -380,13 +381,13 @@ const HotelDetailPage = () => {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={() => alert(`Booking simulated for ${selectedHotel.title} at ${formattedPrice}/night.`)}
-              className="w-full py-3.5 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs font-black uppercase tracking-wider rounded-xl shadow-md transition transform active:scale-95"
+            <Link
+              to={`/hotels/${selectedHotel.id}/reserve`}
+              className="w-full py-3.5 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs font-black uppercase tracking-wider rounded-xl shadow-md transition transform active:scale-95 text-center flex items-center justify-center space-x-2"
             >
-              Reserve Accommodation
-            </button>
+              <span>Reserve Accommodation</span>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
             <p className="text-[10px] text-zinc-500 text-center font-medium">Instant confirmation • No booking fees</p>
           </div>
         </div>
