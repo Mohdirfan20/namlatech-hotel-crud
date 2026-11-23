@@ -100,4 +100,124 @@ INSERT INTO hotels (title, description, image_path, latitude, longitude, price) 
     1.283800,
     103.859100,
     490.00
+),
+(
+    'Santorini Caldera Cliffside Suites',
+    'Whitewashed luxury suites perched over the Aegean Sea with private infinity plunge pools, sunset cocktail terraces, and authentic Cycladic Greek architecture.',
+    '/uploads/hotel-11.jpg',
+    36.461800,
+    25.375300,
+    420.00
+),
+(
+    'Swiss Alpine Chalet & Ski Resort',
+    'Charming wooden alpine retreat facing the Matterhorn with ski-in/ski-out access, heated indoor mineral pools, Swiss fondue dining, and mountain wellness.',
+    '/uploads/hotel-12.jpg',
+    45.976500,
+    7.749100,
+    480.00
+),
+(
+    'Maldives Overwater Turquoise Villa',
+    'Luxury overwater bungalows directly above crystalline turquoise lagoons. Features glass floor viewports, personal catamaran charters, and private deck dining.',
+    '/uploads/hotel-13.jpg',
+    4.175500,
+    73.509300,
+    780.00
+),
+(
+    'The Royal Windsor Castle Lodge',
+    'Regal English countryside manor located moments from Windsor Castle. Traditional afternoon tea gardens, equestrian trails, and classic British hospitality.',
+    '/uploads/hotel-14.jpg',
+    51.483900,
+    -0.604400,
+    290.00
+),
+(
+    'Taj Heritage Gateway Hotel',
+    'Historical palace hotel overlooking the iconic Taj Mahal. Features Mughal-inspired courtyards, marble fountains, classical sitar evenings, and royal Indian dining.',
+    '/uploads/hotel-15.jpg',
+    27.175100,
+    78.042100,
+    185.00
+),
+(
+    'Venetian Grand Canal Luxury Palace',
+    'Renaissance Venetian palazzo along the Grand Canal with private gondola dock, Murano glass chandeliers, frescoed ceilings, and Italian espresso terrace.',
+    '/uploads/hotel-16.jpg',
+    45.440800,
+    12.315500,
+    510.00
+),
+(
+    'Cape Town Atlantic Oceanfront Haven',
+    'Modern oceanfront retreat nestled between Table Mountain and the Atlantic ocean with private sea-view balconies, wine tasting cellars, and safari booking.',
+    '/uploads/hotel-17.jpg',
+    -33.924900,
+    18.424100,
+    275.00
+),
+(
+    'Banff Rocky Mountain Forest Lodge',
+    'Rustic cedar lodge nestled in Banff National Park with roaring stone fireplaces, geothermal outdoor hot tubs, and panoramic views of snow-capped peaks.',
+    '/uploads/hotel-18.jpg',
+    51.178400,
+    -115.570800,
+    310.00
+),
+(
+    'Seoul Gangnam Skyview Tower Hotel',
+    'Sleek futuristic high-rise in Seoul vibrant Gangnam district with cutting-edge smart room controls, 24-hour skyline fitness center, and Korean fusion bistro.',
+    '/uploads/hotel-19.jpg',
+    37.497900,
+    127.027600,
+    240.00
+),
+(
+    'Rio Copacabana Golden Beach Resort',
+    'Energetic oceanfront hotel overlooking Copacabana beach with rooftop caipirinha bar, samba dance lounge, infinity pool, and vibrant Brazilian hospitality.',
+    '/uploads/hotel-20.jpg',
+    -22.969800,
+    -43.186800,
+    195.00
+),
+(
+    'Amsterdam Canal Heritage Townhouse',
+    'Charming 17th-century canal house hotel with vintage Dutch bicycles, tranquil courtyard garden, and walking distance to the Rijksmuseum and Anne Frank House.',
+    '/uploads/hotel-21.jpg',
+    52.367600,
+    4.904100,
+    330.00
+),
+(
+    'Prague Old Town Historical Boutique',
+    'Gothic and Baroque styled luxury boutique hotel in Prague historical square with cobblestone lane views, Bohemian crystal decor, and artisan bakery.',
+    '/uploads/hotel-22.jpg',
+    50.075500,
+    14.437800,
+    170.00
+),
+(
+    'Reykjavik Northern Lights Glass Lodge',
+    'Geothermal Nordic retreat featuring glass-roofed bedrooms for watching the Aurora Borealis, outdoor volcanic hot springs, and Icelandic glacier tours.',
+    '/uploads/hotel-23.jpg',
+    64.146600,
+    -21.942600,
+    460.00
+),
+(
+    'Goa Sunset Palm Beachfront Resort',
+    'Relaxed coastal paradise surrounded by swaying coconut palms and Arabian Sea waves. Features seafood shacks, yoga cabanas, and sunbed cocktail service.',
+    '/uploads/hotel-24.jpg',
+    15.299300,
+    74.124000,
+    140.00
+),
+(
+    'Honolulu Waikiki Surf & Sun Resort',
+    'Tropical Hawaiian resort right on Waikiki Beach with private surf lessons, Polynesian luau dinners, tiki cocktail bar, and breathtaking Pacific sunsets.',
+    '/uploads/hotel-25.jpg',
+    21.306900,
+    -157.858300,
+    390.00
 );

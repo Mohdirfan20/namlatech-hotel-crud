@@ -67,7 +67,7 @@ const initDb = async () => {
       .replace(/DECIMAL\(\d+,\s*\d+\)/gi, 'DECIMAL')
       .replace(/NUMERIC\(\d+,\s*\d+\)/gi, 'NUMERIC');
     await pool.query(memSql);
-    console.log('✅ Embedded PostgreSQL initialized with full schema and 10 seed records.');
+    console.log('✅ Embedded PostgreSQL initialized with full schema and 25 seed records.');
     return pool;
   }
 };
