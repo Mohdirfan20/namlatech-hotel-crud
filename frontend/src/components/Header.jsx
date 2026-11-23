@@ -40,14 +40,6 @@ const Header = () => {
           {/* Quick Nav / Add Hotel Button */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <Link
-              to="/"
-              className={`px-3 py-2 text-sm font-medium rounded-md transition ${
-                location.pathname === '/' ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Browse Directory
-            </Link>
-            <Link
               to="/manage"
               className={`px-3 py-2 text-sm font-medium rounded-md transition ${
                 location.pathname === '/manage' ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-600 hover:text-gray-900'
@@ -92,19 +84,6 @@ const Header = () => {
               ))}
             </nav>
           </div>
-
-          {/* Banner Action Button */}
-          {location.pathname !== '/add' && (
-            <div>
-              <Link
-                to="/add"
-                className="inline-flex items-center space-x-2 px-4 py-2.5 bg-white text-blue-700 hover:bg-blue-50 text-sm font-semibold rounded-lg shadow transition transform active:scale-95"
-              >
-                <Plus className="w-4 h-4 text-blue-600" />
-                <span>List New Hotel</span>
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     </header>
