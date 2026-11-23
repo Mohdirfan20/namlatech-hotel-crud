@@ -9,6 +9,7 @@ const Header = () => {
   const getBreadcrumbs = () => {
     const path = location.pathname;
     if (path === '/') return [{ label: 'Home', to: '/' }, { label: 'Hotels', to: '/' }];
+    if (path === '/manage') return [{ label: 'Home', to: '/' }, { label: 'Admin Console', to: '/manage' }, { label: 'Manage Listings', to: '/manage' }];
     if (path === '/add') return [{ label: 'Home', to: '/' }, { label: 'Hotels', to: '/' }, { label: 'Add New Hotel', to: '/add' }];
     if (path.startsWith('/edit/')) return [{ label: 'Home', to: '/' }, { label: 'Hotels', to: '/' }, { label: 'Edit Hotel', to: path }];
     if (path.startsWith('/hotels/')) return [{ label: 'Home', to: '/' }, { label: 'Hotels', to: '/' }, { label: 'Hotel Details', to: path }];
@@ -37,7 +38,7 @@ const Header = () => {
           </Link>
 
           {/* Quick Nav / Add Hotel Button */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <Link
               to="/"
               className={`px-3 py-2 text-sm font-medium rounded-md transition ${
@@ -47,11 +48,19 @@ const Header = () => {
               Browse Directory
             </Link>
             <Link
+              to="/manage"
+              className={`px-3 py-2 text-sm font-medium rounded-md transition ${
+                location.pathname === '/manage' ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Manage Hotels (Admin)
+            </Link>
+            <Link
               to="/add"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-sm transition transform active:scale-95"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-sm transition transform active:scale-95"
             >
               <Plus className="w-4 h-4" />
-              <span>Add New Hotel</span>
+              <span className="hidden sm:inline">Add New Hotel</span>
             </Link>
           </div>
         </div>

@@ -81,58 +81,31 @@ const HotelCard = ({ hotel, onDeleteClick }) => {
         </div>
       </div>
 
-      {/* Right: Price & Action Buttons */}
-      <div className="md:w-64 p-5 bg-slate-50/80 border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between items-center md:items-end text-center md:text-right">
+      {/* Right: Price & View Details Action */}
+      <div className="md:w-60 p-5 bg-slate-50/80 border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between items-center md:items-end text-center md:text-right">
         <div className="w-full">
           <span className="text-xs text-gray-500 uppercase tracking-wider block font-medium">Starting From</span>
           <div className="text-2xl lg:text-3xl font-black text-gray-900 my-1 tracking-tight">
             {formattedPrice}
             <span className="text-xs font-normal text-gray-500"> / night</span>
           </div>
-          <span className="inline-block text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-4">
+          <span className="inline-block text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-3">
             ✓ Best Price Guaranteed
           </span>
         </div>
 
-        {/* Action Buttons: Prominent View Details, Separated Edit and Delete */}
-        <div className="w-full space-y-3 pt-2">
-          {/* Primary Action: View Details */}
+        {/* Primary Action Button (Clean Visitor UI) */}
+        <div className="w-full pt-2">
           <Link
             to={`/hotels/${hotel.id}`}
-            className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg shadow-sm flex items-center justify-center space-x-2 transition-all transform active:scale-95 hover:shadow-md"
+            className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg shadow-sm flex items-center justify-center space-x-2 transition-all transform active:scale-95 hover:shadow-md"
           >
             <Eye className="w-4 h-4" />
             <span>View Details</span>
           </Link>
-
-          {/* Management Controls Header Divider */}
-          <div className="relative flex items-center py-0.5">
-            <div className="flex-grow border-t border-gray-200"></div>
-            <span className="flex-shrink mx-2 text-[10px] font-bold uppercase tracking-wider text-gray-400 bg-slate-50 px-1">Admin CRUD</span>
-            <div className="flex-grow border-t border-gray-200"></div>
-          </div>
-
-          {/* Separated & Prominent Edit and Delete Buttons */}
-          <div className="grid grid-cols-2 gap-2.5">
-            <Link
-              to={`/edit/${hotel.id}`}
-              className="py-2 px-3 bg-white hover:bg-blue-50 text-blue-700 border-2 border-blue-200 hover:border-blue-400 text-xs font-bold rounded-lg flex items-center justify-center space-x-1.5 transition-all shadow-xs"
-              title="Edit Hotel Listing"
-            >
-              <Edit3 className="w-3.5 h-3.5 text-blue-600" />
-              <span>Edit</span>
-            </Link>
-
-            <button
-              type="button"
-              onClick={() => onDeleteClick(hotel)}
-              className="py-2 px-3 bg-white hover:bg-red-50 text-red-600 border-2 border-red-200 hover:border-red-400 text-xs font-bold rounded-lg flex items-center justify-center space-x-1.5 transition-all shadow-xs"
-              title="Delete Hotel Listing"
-            >
-              <Trash2 className="w-3.5 h-3.5 text-red-600" />
-              <span>Delete</span>
-            </button>
-          </div>
+          <p className="text-[11px] text-gray-400 text-center mt-2">
+            Click to view map & location
+          </p>
         </div>
       </div>
     </article>

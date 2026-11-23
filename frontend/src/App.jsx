@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HotelListPage from './pages/HotelListPage';
 import HotelDetailPage from './pages/HotelDetailPage';
 import AddEditHotelPage from './pages/AddEditHotelPage';
+import AdminManagePage from './pages/AdminManagePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <div className="flex-1">
         <Routes>
           <Route path="/" element={<HotelListPage />} />
+          <Route path="/manage" element={<AdminManagePage />} />
           <Route path="/hotels/:id" element={<HotelDetailPage />} />
           <Route path="/add" element={<AddEditHotelPage />} />
           <Route path="/edit/:id" element={<AddEditHotelPage />} />
