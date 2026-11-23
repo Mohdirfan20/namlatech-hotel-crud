@@ -435,7 +435,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-lg shadow-sm flex items-center space-x-2 transition disabled:opacity-50"
+          className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-lg shadow-sm flex items-center space-x-2 transition disabled:opacity-50"
         >
           {isSubmitting ? (
             <>

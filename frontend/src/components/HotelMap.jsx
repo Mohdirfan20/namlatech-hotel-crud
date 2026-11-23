@@ -127,7 +127,7 @@ const HotelMap = ({ hotelTitle, latitude, longitude }) => {
           type="button"
           onClick={handleLocateMe}
           disabled={locating}
-          className="inline-flex items-center space-x-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-semibold rounded-lg shadow-sm transition disabled:opacity-50"
+          className="inline-flex items-center space-x-2 px-3.5 py-2 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition disabled:opacity-50"
         >
           {locating ? (
             <>

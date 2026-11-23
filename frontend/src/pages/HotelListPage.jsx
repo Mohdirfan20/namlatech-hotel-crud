@@ -6,7 +6,7 @@ import FilterSidebar from '../components/FilterSidebar';
 import HotelCard from '../components/HotelCard';
 import Pagination from '../components/Pagination';
 import { DeleteConfirmModal, SuccessPopup } from '../components/SuccessModal';
-import { Hotel, AlertCircle, RefreshCw, Layers } from 'lucide-react';
+import { Hotel, AlertCircle, RefreshCw, Layers, SlidersHorizontal } from 'lucide-react';
 
 const HotelListPage = () => {
   const dispatch = useDispatch();
@@ -17,15 +17,18 @@ const HotelListPage = () => {
   const [hotelToDelete, setHotelToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Fetch hotels on initial load and when page changes
+  // Fetch hotels on initial load and whenever page or filters change
   useEffect(() => {
     dispatch(fetchHotels());
   }, [dispatch, pagination.page]);
 
-  // Handle page change
+  // Handle page change strictly as a Number
   const handlePageChange = (newPage) => {
-    dispatch(setPage(newPage));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const pageNum = Number(newPage);
+    if (!isNaN(pageNum) && pageNum > 0) {
+      dispatch(setPage(pageNum));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Trigger Delete confirmation
@@ -46,6 +49,11 @@ const HotelListPage = () => {
       setIsDeleting(false);
     }
   };
+
+  // Conditional logic requested by user:
+  // Show filter sidebar on Page 1, or on any page IF a price filter is actively applied.
+  const isPriceFilterActive = filters.minPrice !== '' || filters.maxPrice !== '';
+  const showSidebar = pagination.page === 1 || isPriceFilterActive;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -80,36 +88,48 @@ const HotelListPage = () => {
         isDeleting={isDeleting}
       />
 
-      {/* Two Column Layout: Left Filter Sidebar, Right Main List Area */}
-      <div className="flex flex-col lg:flex-row gap-8 items-start">
-        {/* Left Sidebar */}
-        <FilterSidebar />
+      {/* Two Column Layout: Conditionally renders sidebar based on Page 1 or Active Filter */}
+      <div className={`flex flex-col ${showSidebar ? 'lg:flex-row gap-6' : 'gap-0'} items-start`}>
+        {/* Left Filter Sidebar */}
+        {showSidebar && <FilterSidebar />}
 
         {/* Right Main Content */}
-        <main className="flex-1 w-full">
-          {/* Main List Top Bar matching sample UI */}
-          <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <main className="flex-1 w-full min-w-0">
+          {/* Main List Top Bar (Red, White & Black Theme) */}
+          <div className="bg-white p-4 rounded-xl shadow-xs border border-gray-200 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-2">
-              <span className="text-base font-bold text-gray-900">
+              <span className="text-base font-extrabold text-black">
                 {loading ? 'Searching hotels...' : `${total} Hotels found`}
               </span>
-              {(filters.search || filters.minPrice || filters.maxPrice) && (
-                <span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">
+              {(filters.search || filters.minPrice !== '' || filters.maxPrice !== '') && (
+                <span className="text-xs bg-red-100 text-red-800 border border-red-200 px-2.5 py-0.5 rounded-full font-bold">
                   Filtered
                 </span>
               )}
+              {!showSidebar && (
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(1)}
+                  className="text-xs text-red-600 hover:text-red-800 underline font-semibold flex items-center ml-2"
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5 mr-1" /> Adjust Filter (Go to Page 1)
+                </button>
+              )}
             </div>
 
-            <div className="flex items-center space-x-3 text-xs text-gray-500">
+            <div className="flex items-center space-x-3 text-xs text-gray-500 font-medium">
               <span className="flex items-center">
                 <Layers className="w-3.5 h-3.5 mr-1 text-gray-400" /> Showing {hotels.length} of {total}
               </span>
+              <span>•</span>
+              <span className="text-black font-bold">Page {pagination.page}</span>
               <button
+                type="button"
                 onClick={() => dispatch(fetchHotels())}
-                className="p-1.5 rounded hover:bg-gray-100 text-gray-600 transition"
+                className="p-1.5 rounded hover:bg-gray-100 text-gray-700 transition"
                 title="Refresh list"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-blue-600' : ''}`} />
+                <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-red-600' : ''}`} />
               </button>
             </div>
           </div>
@@ -122,6 +142,7 @@ const HotelListPage = () => {
                 <span>{error}</span>
               </div>
               <button
+                type="button"
                 onClick={() => dispatch(clearError())}
                 className="text-xs font-semibold underline hover:text-red-900"
               >
@@ -148,7 +169,7 @@ const HotelListPage = () => {
           ) : hotels.length === 0 ? (
             /* Empty State */
             <div className="bg-white rounded-xl p-12 text-center border border-gray-200 shadow-sm">
-              <div className="w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-4">
                 <Hotel className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-1">No hotels found</h3>

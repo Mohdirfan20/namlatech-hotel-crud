@@ -67,11 +67,11 @@ const AdminManagePage = () => {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 border border-red-200 text-xs font-bold px-3 py-1 rounded-full mb-2">
               <ShieldAlert className="w-3.5 h-3.5" />
               <span>Dedicated Administration Module</span>
             </div>
-            <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+            <h1 className="text-2xl font-black text-black tracking-tight">
               Hotel Management & CRUD Console
             </h1>
             <p className="text-sm text-gray-500 mt-1">
@@ -82,7 +82,7 @@ const AdminManagePage = () => {
           <div className="flex items-center space-x-3">
             <Link
               to="/add"
-              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm transition transform active:scale-95"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition transform active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Add New Hotel</span>

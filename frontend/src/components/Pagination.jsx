@@ -9,7 +9,7 @@ const Pagination = ({
   limit,
   onPageChange
 }) => {
-  // Support both prop naming conventions defensively
+  // Support both prop naming conventions defensively and enforce strict Number types
   const safeTotalItems = Number(totalItems ?? total ?? 0);
   const safePageSize = Number(pageSize ?? limit ?? 5);
   const safeCurrentPage = Number(currentPage || 1);
@@ -40,21 +40,22 @@ const Pagination = ({
   const endItem = Math.min(safeCurrentPage * safePageSize, safeTotalItems);
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 bg-white px-4 py-4 rounded-xl shadow-sm gap-4 mt-6">
+    <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 bg-white px-4 py-3.5 rounded-xl shadow-xs gap-4 mt-6">
       {/* Information text */}
-      <div className="text-xs text-gray-500">
-        Showing <span className="font-semibold text-gray-900">{startItem}</span> to{' '}
-        <span className="font-semibold text-gray-900">{endItem}</span> of{' '}
-        <span className="font-semibold text-gray-900">{totalItems}</span> hotels
+      <div className="text-xs text-gray-600 font-medium">
+        Showing <span className="font-bold text-black">{startItem}</span> to{' '}
+        <span className="font-bold text-black">{endItem}</span> of{' '}
+        <span className="font-bold text-black">{safeTotalItems}</span> hotels
       </div>
 
       {/* Page Numbers */}
-      <nav className="inline-flex items-center -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+      <nav className="inline-flex items-center -space-x-px rounded-lg shadow-2xs" aria-label="Pagination">
         {/* Previous Button */}
         <button
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="relative inline-flex items-center rounded-l-md px-2.5 py-1.5 text-gray-500 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-40 disabled:cursor-not-allowed"
+          type="button"
+          onClick={() => onPageChange(safeCurrentPage - 1)}
+          disabled={safeCurrentPage <= 1}
+          className="relative inline-flex items-center rounded-l-lg px-2.5 py-1.5 text-gray-600 ring-1 ring-inset ring-gray-300 hover:bg-gray-100 focus:z-20 disabled:opacity-30 disabled:cursor-not-allowed transition"
           aria-label="Previous page"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -67,34 +68,37 @@ const Pagination = ({
             return (
               <span
                 key={`ellipsis-${idx}`}
-                className="relative inline-flex items-center px-3.5 py-1.5 text-xs font-semibold text-gray-700 ring-1 ring-inset ring-gray-300"
+                className="relative inline-flex items-center px-3 py-1.5 text-xs font-bold text-gray-400 ring-1 ring-inset ring-gray-300 bg-gray-50"
               >
                 ...
               </span>
             );
           }
 
-          const isActive = p === currentPage;
+          const pageNum = Number(p);
+          const isActive = pageNum === safeCurrentPage;
           return (
             <button
-              key={`page-${p}`}
-              onClick={() => onPageChange(p)}
-              className={`relative inline-flex items-center px-3.5 py-1.5 text-xs font-semibold focus:z-20 transition ${
+              key={`page-${pageNum}`}
+              type="button"
+              onClick={() => onPageChange(pageNum)}
+              className={`relative inline-flex items-center px-3.5 py-1.5 text-xs font-bold focus:z-20 transition ${
                 isActive
-                  ? 'z-10 bg-blue-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ring-1 ring-inset ring-blue-600'
-                  : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+                  ? 'z-10 bg-red-600 text-white shadow-xs ring-1 ring-inset ring-red-600'
+                  : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-red-50 hover:text-red-700 bg-white'
               }`}
             >
-              {p}
+              {pageNum}
             </button>
           );
         })}
 
         {/* Next Button */}
         <button
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="relative inline-flex items-center rounded-r-md px-2.5 py-1.5 text-gray-500 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-40 disabled:cursor-not-allowed"
+          type="button"
+          onClick={() => onPageChange(safeCurrentPage + 1)}
+          disabled={safeCurrentPage >= totalPages}
+          className="relative inline-flex items-center rounded-r-lg px-2.5 py-1.5 text-gray-600 ring-1 ring-inset ring-gray-300 hover:bg-gray-100 focus:z-20 disabled:opacity-30 disabled:cursor-not-allowed transition"
           aria-label="Next page"
         >
           <ChevronRight className="h-4 w-4" />

@@ -86,21 +86,21 @@ const Header = () => {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <header className="w-full bg-white shadow-sm border-b border-gray-200">
-      {/* Top Navbar */}
+    <header className="w-full bg-white shadow-xs border-b border-gray-200">
+      {/* Top Navbar (Red, White & Black) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md group-hover:bg-blue-700 transition">
+            <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md group-hover:bg-red-700 transition">
               <Building2 className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-xl font-bold tracking-tight text-gray-900 flex items-center">
-                <span className="text-blue-600 font-extrabold mr-1">Namla</span>Tech
-                <span className="ml-2 text-xs font-semibold uppercase tracking-wider bg-blue-100 text-blue-700 px-2 py-0.5 rounded">Hotels</span>
+              <span className="text-xl font-black tracking-tight text-black flex items-center">
+                <span className="text-red-600 mr-1">Namla</span>Tech
+                <span className="ml-2 text-[10px] font-black uppercase tracking-wider bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 rounded">Hotels</span>
               </span>
-              <p className="text-xs text-gray-500 hidden sm:block">Global Hotel Management & Directory</p>
+              <p className="text-[11px] text-gray-500 hidden sm:block font-medium">Global Hotel Management & Directory</p>
             </div>
           </Link>
 
@@ -108,15 +108,17 @@ const Header = () => {
           <div className="flex items-center space-x-2 sm:space-x-3">
             <Link
               to="/manage"
-              className={`px-3 py-2 text-sm font-medium rounded-md transition ${
-                location.pathname === '/manage' ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-600 hover:text-gray-900'
+              className={`px-3 py-2 text-xs font-bold rounded-lg transition ${
+                location.pathname === '/manage'
+                  ? 'text-red-700 bg-red-50 border border-red-200'
+                  : 'text-gray-700 hover:text-black hover:bg-gray-100'
               }`}
             >
               Manage Hotels (Admin)
             </Link>
             <Link
               to="/add"
-              className="inline-flex items-center space-x-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-sm transition transform active:scale-95"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-xs transition transform active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Add New Hotel</span>
@@ -125,26 +127,26 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Blue Banner with Search Bar in Right Corner */}
-      <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white py-6 px-4 sm:px-6 lg:px-8 shadow-inner">
+      {/* Red, White & Black Banner with Search Bar in Right Corner */}
+      <div className="bg-gradient-to-r from-black via-zinc-900 to-red-950 text-white py-6 px-4 sm:px-6 lg:px-8 shadow-inner border-b border-red-900/40">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-5">
           {/* Left: Title & Breadcrumbs */}
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
               {location.pathname === '/add' ? 'Add New Hotel Listing' :
                location.pathname.startsWith('/edit') ? 'Update Hotel Information' :
                location.pathname.startsWith('/hotels') ? 'Hotel Overview & Location' :
                location.pathname === '/manage' ? 'Hotel Management & CRUD Console' :
                'Explore Premier Hotels & Resorts'}
             </h1>
-            <nav className="flex items-center space-x-2 text-xs sm:text-sm text-blue-100 mt-2">
+            <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-400 mt-2">
               {breadcrumbs.map((crumb, idx) => (
                 <React.Fragment key={crumb.to + idx}>
-                  {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-blue-300" />}
+                  {idx > 0 && <ChevronRight className="w-3.5 h-3.5 text-gray-500" />}
                   {idx === breadcrumbs.length - 1 ? (
-                    <span className="font-semibold text-white">{crumb.label}</span>
+                    <span className="font-bold text-white">{crumb.label}</span>
                   ) : (
-                    <Link to={crumb.to} className="hover:text-white hover:underline transition">
+                    <Link to={crumb.to} className="hover:text-red-400 hover:underline transition">
                       {crumb.label}
                     </Link>
                   )}
@@ -163,13 +165,13 @@ const Header = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => searchQuery.trim() && setShowDropdown(true)}
-                  className="w-full pl-4 pr-20 py-2.5 text-sm bg-white/95 backdrop-blur-sm text-gray-900 placeholder-gray-400 rounded-xl shadow-md border-0 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:bg-white transition"
+                  className="w-full pl-4 pr-20 py-2.5 text-xs bg-white text-black placeholder-gray-400 rounded-xl shadow-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-600 transition font-medium"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={handleClearSearch}
-                    className="absolute right-12 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 rounded-full"
+                    className="absolute right-12 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-black rounded-full"
                     title="Clear"
                   >
                     <X className="w-3.5 h-3.5" />
@@ -177,13 +179,13 @@ const Header = () => {
                 )}
                 {isLoadingSuggestions && (
                   <div className="absolute right-12 top-1/2 -translate-y-1/2">
-                    <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-red-600" />
                   </div>
                 )}
               </div>
               <button
                 type="submit"
-                className="absolute right-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center space-x-1 shadow transition"
+                className="absolute right-1.5 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold flex items-center space-x-1 shadow-xs transition"
                 title="Search Hotels"
               >
                 <Search className="w-3.5 h-3.5" />
@@ -194,13 +196,13 @@ const Header = () => {
             {/* Live Autocomplete Suggestions Dropdown */}
             {showDropdown && searchQuery.trim() && (
               <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-gray-800">
-                <div className="p-2.5 bg-slate-50 border-b border-gray-100 flex items-center justify-between text-[11px] font-bold text-gray-500 uppercase tracking-wider">
-                  <span>Suggested Hotels ({suggestions.length})</span>
-                  <span className="text-[10px] text-blue-600">Press Enter to search all</span>
+                <div className="p-2.5 bg-zinc-900 text-white border-b border-zinc-800 flex items-center justify-between text-[10px] font-black uppercase tracking-wider">
+                  <span className="text-red-400">Suggested Hotels ({suggestions.length})</span>
+                  <span className="text-gray-400">Press Enter to search all</span>
                 </div>
 
                 {suggestions.length === 0 ? (
-                  <div className="p-4 text-center text-xs text-gray-500">
+                  <div className="p-4 text-center text-xs text-gray-500 font-medium">
                     No hotels found matching "{searchQuery}"
                   </div>
                 ) : (
@@ -210,7 +212,7 @@ const Header = () => {
                         key={hotel.id}
                         to={`/hotels/${hotel.id}`}
                         onClick={() => setShowDropdown(false)}
-                        className="flex items-center space-x-3 p-3 hover:bg-blue-50/70 transition group text-left"
+                        className="flex items-center space-x-3 p-3 hover:bg-red-50/70 transition group text-left"
                       >
                         <img
                           src={getImageUrl(hotel.image_path)}
@@ -222,25 +224,25 @@ const Header = () => {
                           }}
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition truncate">
+                          <p className="text-xs font-bold text-black group-hover:text-red-600 transition truncate">
                             {hotel.title}
                           </p>
-                          <div className="flex items-center space-x-2 text-[11px] text-gray-500 mt-0.5">
-                            <span className="flex items-center text-amber-500 font-semibold">
+                          <div className="flex items-center space-x-2 text-[10px] text-gray-500 mt-0.5 font-medium">
+                            <span className="flex items-center text-amber-500 font-bold">
                               <Star className="w-3 h-3 fill-amber-400 mr-0.5" /> 4.8
                             </span>
                             <span>•</span>
                             <span className="flex items-center font-mono text-gray-400">
-                              <MapPin className="w-3 h-3 mr-0.5 text-blue-500" />
+                              <MapPin className="w-3 h-3 mr-0.5 text-red-600" />
                               {Number(hotel.latitude).toFixed(2)}°, {Number(hotel.longitude).toFixed(2)}°
                             </span>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className="text-sm font-extrabold text-blue-700 block">
+                          <span className="text-xs font-black text-red-600 block">
                             ${Number(hotel.price).toFixed(2)}
                           </span>
-                          <span className="text-[10px] text-gray-400">/ night</span>
+                          <span className="text-[10px] text-gray-400 font-medium">/ night</span>
                         </div>
                       </Link>
                     ))}
@@ -251,7 +253,7 @@ const Header = () => {
                   <button
                     type="button"
                     onClick={handleSearchSubmit}
-                    className="text-xs font-semibold text-blue-600 hover:text-blue-800 transition"
+                    className="text-xs font-bold text-red-600 hover:text-red-800 transition"
                   >
                     View all matching results for "{searchQuery}" →
                   </button>

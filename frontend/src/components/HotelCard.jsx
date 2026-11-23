@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Eye, Edit3, Trash2, Star, CheckCircle2 } from 'lucide-react';
+import { MapPin, Eye, Star, CheckCircle2 } from 'lucide-react';
 import { getImageUrl } from '../services/api';
 
-const HotelCard = ({ hotel, onDeleteClick }) => {
+const HotelCard = ({ hotel }) => {
   const imageUrl = getImageUrl(hotel.image_path);
 
   // Format price
@@ -13,9 +13,9 @@ const HotelCard = ({ hotel, onDeleteClick }) => {
   });
 
   return (
-    <article className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col md:flex-row group">
+    <article className="bg-white rounded-xl shadow-xs border border-gray-200 hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col md:flex-row group">
       {/* Left: Thumbnail Image with Alt Tag */}
-      <div className="md:w-64 lg:w-72 h-52 md:h-auto flex-shrink-0 relative overflow-hidden bg-gray-100">
+      <div className="md:w-64 lg:w-72 h-52 md:h-auto flex-shrink-0 relative overflow-hidden bg-gray-900">
         <Link to={`/hotels/${hotel.id}`} className="block w-full h-full">
           <img
             src={imageUrl}
@@ -28,7 +28,7 @@ const HotelCard = ({ hotel, onDeleteClick }) => {
             }}
           />
         </Link>
-        <span className="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded-md shadow-sm">
+        <span className="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm">
           Verified Hotel
         </span>
       </div>
@@ -38,14 +38,14 @@ const HotelCard = ({ hotel, onDeleteClick }) => {
         <div>
           {/* Rating stars & location */}
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <div className="flex items-center text-amber-500 text-xs font-semibold">
+            <div className="flex items-center text-amber-500 text-xs font-bold">
               <Star className="w-4 h-4 fill-amber-400 stroke-amber-500 mr-1" />
               <span>4.8</span>
-              <span className="text-gray-400 ml-1 font-normal">(120+ verified reviews)</span>
+              <span className="text-gray-400 ml-1 font-normal">(120+ reviews)</span>
             </div>
             <span className="text-gray-300 hidden sm:inline">•</span>
-            <div className="flex items-center text-xs text-gray-500">
-              <MapPin className="w-3.5 h-3.5 mr-1 text-blue-600 flex-shrink-0" />
+            <div className="flex items-center text-xs text-gray-600 font-medium">
+              <MapPin className="w-3.5 h-3.5 mr-1 text-red-600 flex-shrink-0" />
               <span>
                 {Number(hotel.latitude).toFixed(3)}°, {Number(hotel.longitude).toFixed(3)}°
               </span>
@@ -53,58 +53,58 @@ const HotelCard = ({ hotel, onDeleteClick }) => {
           </div>
 
           {/* Title - clickable to detail page */}
-          <h3 className="text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-600 transition">
+          <h3 className="text-lg font-extrabold text-black mb-2 leading-snug group-hover:text-red-600 transition">
             <Link to={`/hotels/${hotel.id}`}>
               {hotel.title}
             </Link>
           </h3>
 
           {/* Truncated 2-3 line description snippet */}
-          <p className="text-sm text-gray-600 line-clamp-2 md:line-clamp-3 leading-relaxed mb-3">
+          <p className="text-sm text-gray-600 line-clamp-2 md:line-clamp-3 leading-relaxed mb-3 font-normal">
             {hotel.description}
           </p>
 
-          {/* Feature Badges */}
-          <div className="flex flex-wrap items-center gap-2 text-xs text-emerald-700">
-            <span className="inline-flex items-center bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
-              <CheckCircle2 className="w-3 h-3 mr-1 text-emerald-600" /> Free Cancellation
+          {/* Feature Badges (Red, White & Black accents) */}
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <span className="inline-flex items-center bg-gray-100 text-gray-900 px-2.5 py-0.5 rounded border border-gray-200 font-medium">
+              <CheckCircle2 className="w-3 h-3 mr-1 text-red-600" /> Free Cancellation
             </span>
-            <span className="inline-flex items-center bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-100">
+            <span className="inline-flex items-center bg-red-50 text-red-700 px-2.5 py-0.5 rounded border border-red-100 font-medium">
               Free High-Speed Wi-Fi
             </span>
           </div>
         </div>
 
         {/* Small timestamp */}
-        <div className="mt-3 text-[11px] text-gray-400">
+        <div className="mt-3 text-[11px] text-gray-400 font-medium">
           Listed on: {new Date(hotel.created_at).toLocaleDateString()}
         </div>
       </div>
 
       {/* Right: Price & View Details Action */}
-      <div className="md:w-60 p-5 bg-slate-50/80 border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between items-center md:items-end text-center md:text-right">
+      <div className="md:w-60 p-5 bg-zinc-50 border-t md:border-t-0 md:border-l border-gray-200 flex flex-col justify-between items-center md:items-end text-center md:text-right">
         <div className="w-full">
-          <span className="text-xs text-gray-500 uppercase tracking-wider block font-medium">Starting From</span>
-          <div className="text-2xl lg:text-3xl font-black text-gray-900 my-1 tracking-tight">
+          <span className="text-[11px] text-gray-500 uppercase tracking-wider block font-bold">Starting From</span>
+          <div className="text-2xl lg:text-3xl font-black text-black my-1 tracking-tight">
             {formattedPrice}
             <span className="text-xs font-normal text-gray-500"> / night</span>
           </div>
-          <span className="inline-block text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-3">
+          <span className="inline-block text-[11px] font-bold text-red-700 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full mb-3">
             ✓ Best Price Guaranteed
           </span>
         </div>
 
-        {/* Primary Action Button (Clean Visitor UI) */}
+        {/* Primary Action Button (Red, White & Black Theme) */}
         <div className="w-full pt-2">
           <Link
             to={`/hotels/${hotel.id}`}
-            className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg shadow-sm flex items-center justify-center space-x-2 transition-all transform active:scale-95 hover:shadow-md"
+            className="w-full py-2.5 px-4 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm flex items-center justify-center space-x-2 transition-all transform active:scale-95 hover:shadow-md"
           >
             <Eye className="w-4 h-4" />
             <span>View Details</span>
           </Link>
-          <p className="text-[11px] text-gray-400 text-center mt-2">
-            Click to view map & location
+          <p className="text-[10px] text-gray-400 text-center mt-2 font-medium">
+            Interactive map & distance
           </p>
         </div>
       </div>
