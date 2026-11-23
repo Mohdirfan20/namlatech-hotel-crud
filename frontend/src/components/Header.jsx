@@ -101,7 +101,7 @@ const Header = () => {
                 className="inline-flex items-center space-x-2 px-4 py-2.5 bg-white text-blue-700 hover:bg-blue-50 text-sm font-semibold rounded-lg shadow transition transform active:scale-95"
               >
                 <Plus className="w-4 h-4 text-blue-600" />
-                <span>+ List New Hotel</span>
+                <span>List New Hotel</span>
               </Link>
             </div>
           )}
