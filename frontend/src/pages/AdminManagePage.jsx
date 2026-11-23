@@ -226,10 +226,13 @@ const AdminManagePage = () => {
         {/* Pagination in Admin module */}
         <div className="p-4 border-t border-gray-100">
           <Pagination
-            total={total}
-            limit={pagination.limit}
-            offset={pagination.offset}
-            onPageChange={(p) => dispatch(setPage(p))}
+            currentPage={pagination.page}
+            totalItems={total}
+            pageSize={pagination.limit}
+            onPageChange={(p) => {
+              dispatch(setPage(p));
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         </div>
       </div>

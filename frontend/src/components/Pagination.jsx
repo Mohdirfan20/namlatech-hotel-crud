@@ -1,8 +1,20 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Pagination = ({ currentPage, totalItems, pageSize, onPageChange }) => {
-  const totalPages = Math.ceil(totalItems / pageSize);
+const Pagination = ({
+  currentPage = 1,
+  totalItems,
+  pageSize,
+  total,
+  limit,
+  onPageChange
+}) => {
+  // Support both prop naming conventions defensively
+  const safeTotalItems = Number(totalItems ?? total ?? 0);
+  const safePageSize = Number(pageSize ?? limit ?? 5);
+  const safeCurrentPage = Number(currentPage || 1);
+
+  const totalPages = Math.ceil(safeTotalItems / safePageSize);
 
   if (totalPages <= 1) return null;
 
@@ -12,20 +24,20 @@ const Pagination = ({ currentPage, totalItems, pageSize, onPageChange }) => {
     if (totalPages <= 7) {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
-      if (currentPage <= 4) {
+      if (safeCurrentPage <= 4) {
         pages.push(1, 2, 3, 4, 5, '...', totalPages);
-      } else if (currentPage >= totalPages - 3) {
+      } else if (safeCurrentPage >= totalPages - 3) {
         pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
       } else {
-        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+        pages.push(1, '...', safeCurrentPage - 1, safeCurrentPage, safeCurrentPage + 1, '...', totalPages);
       }
     }
     return pages;
   };
 
   const pages = getPageNumbers();
-  const startItem = (currentPage - 1) * pageSize + 1;
-  const endItem = Math.min(currentPage * pageSize, totalItems);
+  const startItem = (safeCurrentPage - 1) * safePageSize + 1;
+  const endItem = Math.min(safeCurrentPage * safePageSize, safeTotalItems);
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 bg-white px-4 py-4 rounded-xl shadow-sm gap-4 mt-6">
