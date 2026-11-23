@@ -141,13 +141,25 @@ const HotelListPage = () => {
                 <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                 <span>{error}</span>
               </div>
-              <button
-                type="button"
-                onClick={() => dispatch(clearError())}
-                className="text-xs font-semibold underline hover:text-red-900"
-              >
-                Dismiss
-              </button>
+              <div className="flex items-center space-x-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispatch(clearError());
+                    dispatch(fetchHotels());
+                  }}
+                  className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition"
+                >
+                  Retry Now
+                </button>
+                <button
+                  type="button"
+                  onClick={() => dispatch(clearError())}
+                  className="text-xs font-semibold underline hover:text-red-900"
+                >
+                  Dismiss
+                </button>
+              </div>
             </div>
           )}
 
@@ -174,8 +186,19 @@ const HotelListPage = () => {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-1">No hotels found</h3>
               <p className="text-sm text-gray-500 max-w-md mx-auto mb-6">
-                We couldn't find any hotels matching your current search and price filter criteria. Try adjusting your filters.
+                We couldn't find any hotels matching your current criteria. Try resetting your search or price filters.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(resetFilters());
+                  dispatch(fetchHotels());
+                }}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition"
+              >
+                <RefreshCw className="w-4 h-4" />
+                <span>Reload All 25 Hotels</span>
+              </button>
             </div>
           ) : (
             /* Vertical stack of Horizontal Hotel Cards */
