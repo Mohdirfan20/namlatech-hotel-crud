@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Building2, Plus, ChevronRight, Search, X, Loader2, MapPin, Star } from 'lucide-react';
+import { Plus, ChevronRight, Search, X, Loader2, MapPin, Star } from 'lucide-react';
 import { setSearch, fetchHotels } from '../redux/hotelSlice';
 import { hotelApi, getImageUrl } from '../services/api';
+import NamlaTechLogo from './NamlaTechLogo';
 
 const Header = () => {
   const location = useLocation();
@@ -90,19 +91,8 @@ const Header = () => {
       {/* Top Navbar (Red, White & Black) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md group-hover:bg-red-700 transition">
-              <Building2 className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-xl font-black tracking-tight text-black flex items-center">
-                <span className="text-red-600 mr-1">Namla</span>Tech
-                <span className="ml-2 text-[10px] font-black uppercase tracking-wider bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 rounded">Hotels</span>
-              </span>
-              <p className="text-[11px] text-gray-500 hidden sm:block font-medium">Global Hotel Management & Directory</p>
-            </div>
-          </Link>
+          {/* Bespoke NamlaTech Hotels Brand Logo */}
+          <NamlaTechLogo size="md" />
 
           {/* Top Right: Admin Management & Add Hotel */}
           <div className="flex items-center space-x-2 sm:space-x-3">

@@ -11,10 +11,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
 });
 
-// Custom user location marker icon (emerald/blue circle)
+// Custom user location marker icon (red circle)
 const userLocationIcon = new L.DivIcon({
   className: 'custom-user-marker',
-  html: `<div style="background-color: #2563EB; width: 18px; height: 18px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(37,99,235,0.8); animation: pulse 1.5s infinite;"></div>`,
+  html: `<div style="background-color: #DC2626; width: 18px; height: 18px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(220,38,38,0.8); animation: pulse 1.5s infinite;"></div>`,
   iconSize: [18, 18],
   iconAnchor: [9, 9]
 });
@@ -115,7 +115,7 @@ const HotelMap = ({ hotelTitle, latitude, longitude }) => {
       <div className="p-4 bg-gray-50 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h4 className="text-sm font-bold text-gray-900 flex items-center">
-            <MapPin className="w-4 h-4 mr-1.5 text-blue-600" /> Hotel Geographic Location
+            <MapPin className="w-4 h-4 mr-1.5 text-red-600" /> Hotel Geographic Location
           </h4>
           <p className="text-xs text-gray-500">
             Coordinates: {hotelLat.toFixed(6)}, {hotelLng.toFixed(6)}
@@ -204,7 +204,7 @@ const HotelMap = ({ hotelTitle, latitude, longitude }) => {
             <Marker position={[userLocation.lat, userLocation.lng]} icon={userLocationIcon}>
               <Popup>
                 <div className="p-1 text-xs">
-                  <strong className="text-blue-700">Your Current Position</strong>
+                  <strong className="text-red-700">Your Current Position</strong>
                   <p className="mt-1">Distance to hotel: {distanceKm} km</p>
                 </div>
               </Popup>

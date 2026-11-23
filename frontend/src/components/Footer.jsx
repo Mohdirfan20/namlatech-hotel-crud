@@ -1,5 +1,6 @@
 import React from 'react';
-import { Building2, Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import NamlaTechLogo from './NamlaTechLogo';
 
 const Footer = () => {
   return (
@@ -8,13 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 text-white mb-4">
-              <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold shadow-md">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <span className="text-xl font-black tracking-tight">
-                <span className="text-red-600">Namla</span>Tech Hotels
-              </span>
+            <div className="mb-4">
+              <NamlaTechLogo inverted={true} size="md" />
             </div>
             <p className="text-xs text-zinc-400 mb-4 max-w-sm leading-relaxed">
               Full-featured hotel management SPA built with React, Redux Toolkit, Node.js, Express, and PostgreSQL Native SQL queries.

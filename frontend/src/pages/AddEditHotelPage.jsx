@@ -62,7 +62,7 @@ const AddEditHotelPage = () => {
       <div>
         <Link
           to={isEdit ? `/hotels/${id}` : '/'}
-          className="inline-flex items-center space-x-2 text-xs font-semibold text-gray-600 hover:text-blue-600 transition"
+          className="inline-flex items-center space-x-2 text-xs font-bold text-gray-700 hover:text-red-600 transition"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>{isEdit ? 'Back to Hotel Details' : 'Back to Directory'}</span>
@@ -72,11 +72,11 @@ const AddEditHotelPage = () => {
       {/* Header card */}
       <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+          <div className="w-10 h-10 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-600">
             <Building2 className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-extrabold text-gray-900">{pageTitle}</h1>
+            <h1 className="text-xl font-extrabold text-black">{pageTitle}</h1>
             <p className="text-xs text-gray-500">
               {isEdit
                 ? 'Update accommodation details, pricing, coordinates, and images.'
@@ -97,8 +97,8 @@ const AddEditHotelPage = () => {
       {/* Form or Loader */}
       {isEdit && detailLoading ? (
         <div className="p-12 text-center bg-white rounded-xl border border-gray-200">
-          <div className="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-2"></div>
-          <p className="text-xs text-gray-500">Loading hotel data for editing...</p>
+          <div className="inline-block w-8 h-8 border-4 border-red-600 border-t-transparent rounded-full animate-spin mb-2"></div>
+          <p className="text-xs text-gray-500 font-bold">Loading hotel data for editing...</p>
         </div>
       ) : (
         <HotelForm

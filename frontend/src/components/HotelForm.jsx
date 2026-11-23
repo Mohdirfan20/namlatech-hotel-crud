@@ -200,7 +200,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           {/* Upload Dropzone */}
-          <div className="relative border-2 border-dashed border-gray-300 hover:border-blue-500 rounded-xl p-6 text-center cursor-pointer transition bg-gray-50 hover:bg-blue-50/30 group">
+          <div className="relative border-2 border-dashed border-gray-300 hover:border-red-500 rounded-xl p-6 text-center cursor-pointer transition bg-gray-50 hover:bg-red-50/30 group">
             <input
               type="file"
               id="hotel-image-input"
@@ -209,7 +209,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
             <div className="flex flex-col items-center justify-center space-y-2 pointer-events-none">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:scale-110 transition">
+              <div className="w-12 h-12 rounded-full bg-red-50 border border-red-200 flex items-center justify-center text-red-600 group-hover:scale-110 transition">
                 <UploadCloud className="w-6 h-6" />
               </div>
               <div className="text-sm font-semibold text-gray-700">
@@ -284,7 +284,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
               placeholder="e.g. Grand Luxury Resort & Spa"
               className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                 errors.title ? 'border-red-500 bg-red-50/20' : 'border-gray-300 bg-gray-50'
-              } focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition`}
+              } focus:bg-white focus:ring-2 focus:ring-red-600 outline-none transition`}
             />
             {errors.title && (
               <p className="text-xs text-red-600 mt-1 flex items-center">
@@ -313,7 +313,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
                 placeholder="250.00"
                 className={`w-full pl-8 pr-3.5 py-2.5 text-sm rounded-lg border ${
                   errors.price ? 'border-red-500 bg-red-50/20' : 'border-gray-300 bg-gray-50'
-                } focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition`}
+                } focus:bg-white focus:ring-2 focus:ring-red-600 outline-none transition`}
               />
             </div>
             {errors.price && (
@@ -340,7 +340,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
             placeholder="Describe the hotel atmosphere, amenities, views, dining options, and guest experience..."
             className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
               errors.description ? 'border-red-500 bg-red-50/20' : 'border-gray-300 bg-gray-50'
-            } focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition`}
+            } focus:bg-white focus:ring-2 focus:ring-red-600 outline-none transition`}
           ></textarea>
           {errors.description && (
             <p className="text-xs text-red-600 mt-1 flex items-center">
@@ -354,12 +354,12 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
       <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-gray-100 pb-2">
           <h3 className="text-sm font-bold text-gray-900 flex items-center">
-            <MapPin className="w-4 h-4 mr-1.5 text-blue-600" /> Geographic Location
+            <MapPin className="w-4 h-4 mr-1.5 text-red-600" /> Geographic Location
           </h3>
           <button
             type="button"
             onClick={handleUseMyLocation}
-            className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center space-x-1"
+            className="text-xs font-bold text-red-600 hover:text-red-800 flex items-center space-x-1"
           >
             <Navigation className="w-3.5 h-3.5" />
             <span>Fill Current Device Coordinates</span>
@@ -384,7 +384,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
               placeholder="e.g. 48.8584"
               className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                 errors.latitude ? 'border-red-500 bg-red-50/20' : 'border-gray-300 bg-gray-50'
-              } focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition`}
+              } focus:bg-white focus:ring-2 focus:ring-red-600 outline-none transition`}
             />
             {errors.latitude && (
               <p className="text-xs text-red-600 mt-1 flex items-center">
@@ -410,7 +410,7 @@ const HotelForm = ({ initialData = null, onSubmit, isSubmitting = false, isEdit 
               placeholder="e.g. 2.2945"
               className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                 errors.longitude ? 'border-red-500 bg-red-50/20' : 'border-gray-300 bg-gray-50'
-              } focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition`}
+              } focus:bg-white focus:ring-2 focus:ring-red-600 outline-none transition`}
             />
             {errors.longitude && (
               <p className="text-xs text-red-600 mt-1 flex items-center">
