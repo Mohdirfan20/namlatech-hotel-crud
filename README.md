@@ -9,7 +9,11 @@ Built with **React (Vite)**, **Redux Toolkit**, **Node.js**, **Express.js**, and
 ## 🌟 Key Features
 
 ### 🖥️ Frontend (React SPA + Redux Toolkit)
-- **Responsive Marketplace Layout:** Two-column desktop layout matching the sample UI with top blue header banner (`#2563EB`), breadcrumbs, left filter sidebar, horizontal card list, and centered pagination.
+- **Responsive Marketplace Layout:** Two-column desktop layout matching the NamlaTech specification with branded red/black top header banner, dynamic breadcrumbs, live autocomplete search bar, left price filter sidebar, horizontal card list, and centered pagination.
+- **Custom Brand Identity:** Bespoke SVG NamlaTech architectural emblem with twin skyscraper towers, hospitality spire star, and unified Black, Red, and White palette.
+- **Full Accommodation Reservation Workflow (`/hotels/:id/reserve`):** 4-step booking portal with date selection, suite upgrades, guest information, payment breakdown, and printable booking voucher passes.
+- **Dedicated Admin Management Console (`/manage`):** Isolated administrative module for viewing, filtering, editing, and deleting listings with confirmation modals and auto-dismiss toasts.
+- **Interior & Room Photo Gallery:** 5-photo high-resolution room and facility showcase for each property (exterior, king suite, marble bath, fine dining, infinity pool).
 - **Reusable `HotelForm` Component:** Single reusable form for both creating (`/add`) and editing (`/edit/:id`) hotel listings.
   - Image upload with live image preview (retains current image during edit).
   - Client-side input validation with inline feedback (title, description, lat `-90..90`, lng `-180..180`, positive price).
@@ -17,10 +21,10 @@ Built with **React (Vite)**, **Redux Toolkit**, **Node.js**, **Express.js**, and
 - **Interactive Hotel Cards (NOT a table):**
   - Left: Thumbnail image with descriptive SEO `alt` tag and lazy loading.
   - Center: Clickable title, review rating badge, coordinates, feature badges, and a truncated 2–3 line description snippet.
-  - Right: Formatted nightly price (`$USD`), **View Details**, **Edit**, and **Delete** actions.
+  - Right: Formatted nightly price (`$USD`), and prominent **View Details** action.
 - **Search & Price Range Filters:**
-  - Case-insensitive title search.
-  - Price Range filter card with an interactive slider, `Min` and `Max` number inputs, and an **APPLY** button + reset button.
+  - Real-time case-insensitive search with autocomplete suggestions.
+  - Price Range filter card with an interactive slider, `Min` and `Max` number inputs, and an **APPLY** button + reset button (smartly displayed on Page 1 or when active).
 - **Pagination Component:** Reusable component driven by `total`, `limit`, and `offset` with direct page navigation.
 - **Delete Confirmation & Success Popup:** Modal confirmation prompt before record removal and an auto-dismissing success toast upon successful deletion.
 - **Hotel Detail Page (`/hotels/:id`):** Full hero banner, description, amenities, and an interactive **Leaflet OpenStreetMap** centered on the hotel's coordinates.
@@ -110,7 +114,7 @@ CREATE INDEX IF NOT EXISTS idx_hotels_title ON hotels(title);
 CREATE INDEX IF NOT EXISTS idx_hotels_price ON hotels(price);
 ```
 
-Pre-seeded with **10 realistic global hotels** (Paris, New York, Kyoto, Dubai, London, Sydney, Rome, Bali, Barcelona, Singapore) each equipped with real coordinates, prices, descriptions, and local image files.
+Pre-seeded with **25 realistic global hotels** (Honolulu, Goa, Reykjavik, Prague, Amsterdam, Paris, New York, Kyoto, Dubai, London, Sydney, Rome, Bali, Barcelona, Singapore, etc.) each equipped with real coordinates, prices, descriptions, and local image files.
 
 ---
 
